@@ -45,3 +45,29 @@ scaffold/_tmp_home/
 scaffold/_mame_tmp/
 __pycache__/
 *.pyc
+
+# ===== 敏感信息：绝不允许入库 =====
+# 环境变量与本地配置（真实密钥只放这里，示例值放 .env.example）
+.env
+.env.*
+!.env.example
+
+# 私钥 / 证书 / 密钥库
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+id_rsa*
+id_dsa*
+*.ppk
+
+# 凭据类文件
+credentials*
+*.secrets
+*.secret
+secret*.json
+
+# 本机配置备份（可能含用户设置）
+*.bak
+*.bak-*
