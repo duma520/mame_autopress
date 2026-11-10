@@ -8,8 +8,8 @@
 
 - 当前插件版本：**v1.0.5**（归档 `20261110-v6`）
 - 本文档版本：**2026-11-10 重写为完全指南**（归档 `20261110-v8`）
-- 源码：`G:\Python_Code\mame_autopress\plugins\mame_autopress`
-- 部署：`Z:\ROM 街机\MAMEUI64 Plus!\mameui\plugins\mame_autopress`
+- 源码：`plugins/mame_autopress/`（本仓库内）
+- 部署：`<MAME 安装目录>\plugins\mame_autopress\`（把上面那个目录整个拷过去）
 - 兼容性：MAMEUI64 Plus!（MAME 0.289 实测通过），纯 Lua 插件，无外部依赖
 - 许可：BSD-3-Clause（可自由使用、修改、分发，保留版权声明即可）
 
@@ -219,7 +219,7 @@ mame_autopress            1
 用命令行启动 MAME 并打开日志：
 
 ```powershell
-Start-Process mameui.exe -WorkingDirectory 'Z:\ROM 街机\MAMEUI64 Plus!\mameui' `
+Start-Process mameui.exe -WorkingDirectory '<MAME 安装目录>' `
   -ArgumentList @('xmen','-log','-verbose') 
 ```
 
@@ -467,10 +467,10 @@ MAME 的插件菜单是靠「第几行」定位的：你按上下移动光标，
 <homepath>/mame_autopress/
 ```
 
-`homepath` 是 MAME 的「主目录」选项，实测值是 `.`，也就是 **`mameui.exe` 所在的目录**。所以完整路径通常是：
+`homepath` 是 MAME 的「主目录」选项，默认值是 `.`，也就是 **`mameui.exe` 所在的目录**。所以完整路径通常是：
 
 ```text
-Z:\ROM 街机\MAMEUI64 Plus!\mameui\mame_autopress\
+<MAME 安装目录>\mame_autopress\
 ```
 
 插件第一次运行会自动创建这个目录，并做两件事：
@@ -1019,7 +1019,7 @@ P1~P4，四个。街机原生支持四人同屏的已经是极限。
 ## 44. 项目目录
 
 ```text
-G:\Python_Code\mame_autopress\
+mame_autopress\                      # 本仓库根目录
 ├── plugins\mame_autopress\        # 插件本体（部署到 MAME 的就是这个目录）
 │   ├── init.lua                   # 主程序（约 909 行，v1.0.5）
 │   └── plugin.json                # 插件声明（无 BOM）
@@ -1044,7 +1044,7 @@ G:\Python_Code\mame_autopress\
 ```powershell
 $env:PYTHONIOENCODING='utf-8'
 [Console]::OutputEncoding=[Text.Encoding]::UTF8
-& 'D:\Program Files\Python310\python.exe' scaffold\test_mock.py
+& python scaffold\test_mock.py
 ```
 
 通过时输出：
@@ -1061,7 +1061,7 @@ $env:PYTHONIOENCODING='utf-8'
 用命令行启动、带日志、用临时目录避免污染你的配置：
 
 ```powershell
-$wd  = 'Z:\ROM 街机\MAMEUI64 Plus!\mameui'
+$wd  = '<MAME 安装目录>'
 $tmp = "$PWD\scaffold\_mame_tmp"
 Start-Process "$wd\mameui.exe" -WorkingDirectory $wd -ArgumentList @(
   'xmen','-log','-verbose','-window','-seconds_to_run','6',
@@ -1085,7 +1085,7 @@ python scaffold\_probe_patch.py restore   # 从 G 盘源码覆盖还原（务必
 
 ## 47. 开发约定与避坑
 
-开发前请通读 [MAME插件开发避坑指南.md](MAME插件开发避坑指南.md)（原样拷自 `G:\Python_Code\mame_kbd`，36 KB）。最常踩的几条：
+开发前请通读 [MAME插件开发避坑指南.md](MAME插件开发避坑指南.md)（原样拷自同作者的 mame_kbd 项目，36 KB）。最常踩的几条：
 
 - `plugin.json` 必须**无 BOM**，否则插件根本不加载（日志：`Unable to parse plugin definition file`）。
 - 插件目录名必须等于 `plugin.json` 的 `name`。
