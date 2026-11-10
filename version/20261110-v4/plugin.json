@@ -1,0 +1,10 @@
+{
+	"plugin": {
+		"name": "mame_autopress",
+		"description": "Auto-press: per-player menu pages with independent toggles for 4 directions and assigned buttons",
+		"version": "1.0.3",
+		"author": "local",
+		"type": "plugin",
+		"start": "true"
+	}
+}
