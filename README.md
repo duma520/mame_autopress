@@ -11,7 +11,7 @@
 - 源码：`plugins/mame_autopress/`（本仓库内）
 - 部署：`<MAME 安装目录>\plugins\mame_autopress\`（把上面那个目录整个拷过去）
 - 兼容性：MAMEUI64 Plus!（MAME 0.289 实测通过），纯 Lua 插件，无外部依赖
-- 许可：BSD-3-Clause（可自由使用、修改、分发，保留版权声明即可）
+- 许可：AGPL-3.0（可自由使用、修改、分发，保留版权声明即可）
 
 ---
 
@@ -1164,7 +1164,7 @@ python scaffold\_probe_patch.py restore   # 从 G 盘源码覆盖还原（务必
 
 # 第十二部分 · 贡献与许可
 
-- **许可**：BSD-3-Clause。可自由使用、修改、再分发，保留版权与许可声明。
+- **许可**：AGPL-3.0。可自由使用、修改、再分发，保留版权与许可声明。
 - **反馈问题**：请附上 `status.json` 全文 + MAME 日志里的 `[mame_autopress]` 行 + ROM 短名。
 - **提交代码前**：跑一遍 `scaffold\test_mock.py`，确保 92 项全通过；`plugin.json` / `init.lua` 保持无 BOM、全 LF。
 - **修改文档**：同步更新「版本更新简介」表 + 迭代记录 + `version/` 备份。
